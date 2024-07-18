@@ -84,28 +84,7 @@ const Form = () => {
           <Text style={{ color: "red" }}>{errors.name.message}</Text>
         )}
       </View>
-      <View className="mb-10">
-        <Text className="font-semibold text-base text-gray-200 mb-4">
-          Start Date
-        </Text>
-        <Controller
-          control={control}
-          name="startDate"
-          render={({ field: { onChange, value } }) => (
-            <DateTimePicker
-              testID="dateTimePicker"
-              value={value }
-              display="calendar"
-              mode="date"
-              minimumDate={currentDate}
-              onChange={(event, selectedDate) => {
-                const currentDate = selectedDate || value;
-                onChange(currentDate);
-              }}
-            />
-          )}
-        />
-      </View>
+
       <View className="space-y-2">
         <Text className="font-semibold text-base text-gray-200 mb-4">
           {" "}
@@ -132,7 +111,28 @@ const Form = () => {
           <Text style={{ color: "red" }}>{errors.description.message}</Text>
         )}
       </View>
-
+      <View className="mb-10">
+        <Text className="font-semibold text-base text-gray-200 mb-4">
+          Start Date
+        </Text>
+        <Controller
+          control={control}
+          name="startDate"
+          render={({ field: { onChange, value } }) => (
+            <DateTimePicker
+              testID="dateTimePicker"
+              value={value}
+              display="calendar"
+              mode="date"
+              minimumDate={currentDate}
+              onChange={(event, selectedDate) => {
+                const currentDate = selectedDate || value;
+                onChange(currentDate);
+              }}
+            />
+          )}
+        />
+      </View>
       <TouchableOpacity
         onPress={handleSubmit(onSubmit)}
         className="bg-secondary rounded-xl min-h-[62px] flex flex-row justify-center items-center"
