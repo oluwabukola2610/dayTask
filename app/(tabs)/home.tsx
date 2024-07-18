@@ -2,7 +2,7 @@ import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 // import Trending from "@/components/customs/Trending";
-import { router, useNavigation } from "expo-router";
+import { router, useNavigation, useRouter } from "expo-router";
 import CustomSearch from "@/components/CustomSearch";
 import CompletedTask from "@/components/CompletedTask";
 import { useDispatch } from "react-redux";
@@ -10,9 +10,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/services/Store";
 import { removeTodo, toggleTodo } from "@/services/TodoSlice";
 import { FontAwesome } from "@expo/vector-icons";
-import { NativeStackNavigationProp } from "react-native-screens/lib/typescript/native-stack/types";
-import { RootStackParamList } from "@/constants";
-
 const Home = () => {
   const dispatch = useDispatch();
   const todos = useSelector((state: RootState) => state.todos);
@@ -25,8 +22,7 @@ const Home = () => {
     dispatch(removeTodo(id));
   };
   const completedTasks = todos.filter((task) => task.completed);
-  const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const {push} = useRouter()
   return (
     <SafeAreaView className="bg-primary h-full">
       <FlatList
@@ -39,7 +35,7 @@ const Home = () => {
             </Text>
             <TouchableOpacity
               onPress={() =>
-                navigation.navigate("details", { taskId: item.id })
+                push(`/details/${item.id}`)
               }
               className="bg-[#455A64] h-14 px-4 border-black-200 rounded-2xl w-full border focus:border-secondary flex items-center flex-row justify-between"
             >

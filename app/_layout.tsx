@@ -1,6 +1,7 @@
 import { persistor, store } from "@/services/Store";
+import { Ionicons } from "@expo/vector-icons";
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
+import { router, Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { Text, View } from "react-native";
@@ -40,7 +41,15 @@ export default function RootLayout() {
         <Stack>
           <Stack.Screen name="index" options={{ headerShown: false }} />
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="details" options={{ headerShown: false }} />
+          <Stack.Screen
+            name="details/[id]"
+      
+            options={{
+              title: "Task Details",
+              headerBackVisible: false,
+              headerLeft: () => <Ionicons name="arrow-back" size={25} onPress={()=>router.back()} />,
+            }}
+          />
         </Stack>
       </PersistGate>
       {/* <StatusBar backgroundColor="#161622" style="light" /> */}

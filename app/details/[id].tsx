@@ -3,13 +3,11 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/services/Store";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { RouteProp } from "@react-navigation/native";
-import { RootStackParamList } from "@/constants";
-type TaskDetailsRouteProp = RouteProp<RootStackParamList, "details">;
-const TaskDetails = ({ route }: { route: TaskDetailsRouteProp }) => {
-  const id = route.params.taskId;
+import { useLocalSearchParams } from "expo-router";
+const TaskDetails = () => {
+  const params = useLocalSearchParams();
   const task = useSelector((state: RootState) =>
-    state.todos.find((todo) => todo.id === id)
+    state.todos.find((todo) => todo.id === params.id)
   );
 
   if (!task) {
