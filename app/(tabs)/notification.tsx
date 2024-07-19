@@ -7,9 +7,9 @@ const notification = () => {
   return (
     <SafeAreaView className="h-full bg-primary">
     <ScrollView
-      contentContainerStyle={{ height: "100%" }}
-      className="p-6 gap-y-6"
-    >
+       contentContainerStyle={{ flexGrow: 1 }} 
+       className="p-6 gap-y-6"
+     >
       <Text>Notification</Text>
     </ScrollView>
   </SafeAreaView>

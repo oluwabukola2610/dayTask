@@ -16,8 +16,8 @@ const index = () => {
   };
   return (
     <SafeAreaView className="h-full bg-primary">
-      <ScrollView
-        contentContainerStyle={{ height: "100%" }}
+     <ScrollView
+        contentContainerStyle={{ flexGrow: 1 }} 
         className="p-6 gap-y-6"
       >
         <View>
