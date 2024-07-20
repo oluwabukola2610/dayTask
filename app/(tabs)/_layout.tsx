@@ -101,8 +101,8 @@ const TabsLayout = () => {
                 style={{
                   color: color,
                   marginTop: 4,
-                  fontSize: 14,
-                  fontWeight: focused ? "bold" : "normal",
+                  fontSize: 13,
+                  fontWeight: "normal",
                 }}
               >
                 Notification

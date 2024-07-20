@@ -1,4 +1,10 @@
-import { View, Text, TextInput, TouchableOpacity, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { schema } from "@/constants/Validation";
@@ -37,12 +43,7 @@ const Form = () => {
   };
   const currentDate = new Date();
   return (
-    
     <SafeAreaView className="bg-primary h-full pt-10 px-4 space-y-8">
-      <ScrollView
-       contentContainerStyle={{ flexGrow: 1 }} 
-       className="p-6 gap-y-6"
-     >
       <View className=" items-start">
         <Text className="font-semibold text-base text-gray-200 mb-4">
           Title
@@ -144,7 +145,6 @@ const Form = () => {
       >
         <Text className="text-primary font-semibold text-lg ">Add Task</Text>
       </TouchableOpacity>
-      </ScrollView>
     </SafeAreaView>
   );
 };

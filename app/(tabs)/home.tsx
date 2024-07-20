@@ -32,15 +32,15 @@ const Home = () => {
   const { push } = useRouter();
   return (
     <SafeAreaView className="h-full bg-primary">
-      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <FlatList
-          data={todos ?? []}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <View className=" my-6 px-4 space-y-6">
-              <Text className="text-lg font-pregular text-gray-100 mb-1">
-                All Tasks
-              </Text>
+      <FlatList
+        data={todos ?? []}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <View className="my-6 px-4 ">
+            <Text className="text-lg font-pregular text-gray-100 mb-1">
+              All Tasks
+            </Text>
+            <View className=" space-y-4">
               <TouchableOpacity
                 onPress={() => push(`/details/${item.id}`)}
                 className="bg-[#455A64] h-14 px-4 border-black-200 rounded-2xl w-full border focus:border-secondary flex items-center flex-row justify-between"
@@ -73,41 +73,43 @@ const Home = () => {
                 </View>
               </TouchableOpacity>
             </View>
-          )}
-          ListHeaderComponent={() => (
-            <View className=" my-6 px-4 space-y-12">
-              <View className="">
-                <Text className="font-semibold text-lg text-gray-100 mb-6">
-                  Welcome Back
-                </Text>
-                <CustomSearch />
-              </View>
-              <View className="w-full flex-1 ">
+          </View>
+        )}
+        ListHeaderComponent={() => (
+          <View className=" my-6 px-4 space-y-12">
+            <View className="">
+              <Text className="font-semibold text-lg text-gray-100 mb-6">
+                Welcome Back
+              </Text>
+              <CustomSearch />
+            </View>
+            <View className="w-full flex-1 ">
+              {completedTasks && (
                 <Text className="text-xl font-semibold text-gray-100 mb-4">
                   Completed Tasks
                 </Text>
-                <CompletedTask data={completedTasks} />
-              </View>
+              )}
+              <CompletedTask data={completedTasks} />
             </View>
-          )}
-          ListEmptyComponent={() => (
-            <View className="flex justify-center items-center px-4">
-              <Image
-                source={require("../../assets/images/empty.png")}
-                resizeMode="contain"
-                className="w-[270px] h-[216px]"
-              />
+          </View>
+        )}
+        ListEmptyComponent={() => (
+          <View className="flex justify-center items-center px-4">
+            <Image
+              source={require("../../assets/images/empty.png")}
+              resizeMode="contain"
+              className="w-[270px] h-[216px]"
+            />
 
-              <Text className="text-xl text-center font-psemibold text-white mt-2">
-                No Task created yet
-              </Text>
-            </View>
-          )}
-          // refreshControl={
-          //   <RefreshControl refreshing={refreshing} onRefresh={onrefesh} />
-          // }
-        />
-      </ScrollView>
+            <Text className="text-xl text-center font-psemibold text-white mt-2">
+              No Task created yet
+            </Text>
+          </View>
+        )}
+        // refreshControl={
+        //   <RefreshControl refreshing={refreshing} onRefresh={onrefesh} />
+        // }
+      />
     </SafeAreaView>
   );
 };
