@@ -84,7 +84,7 @@ const Home = () => {
               <CustomSearch />
             </View>
             <View className="w-full flex-1 ">
-              {completedTasks && (
+              {completedTasks.length >0 && (
                 <Text className="text-xl font-semibold text-gray-100 mb-4">
                   Completed Tasks
                 </Text>

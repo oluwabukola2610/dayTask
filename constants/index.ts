@@ -1,6 +1,3 @@
-import { RootState } from "@/services/Store";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-
 export const DefaultValues = {
   category: "",
   name: "",
